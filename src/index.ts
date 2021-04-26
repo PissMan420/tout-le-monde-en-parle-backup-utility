@@ -1,16 +1,13 @@
 import fetch from "node-fetch";
 import { writeFile, mkdir } from "fs";
 
-let i = 1000;
+let i = 1274;
 setInterval(async () => {
-    downloadPart(++i);
-    downloadPart(++i);
-    downloadPart(++i);
-    downloadPart(++i);
-    downloadPart(++i);
+  for (let j = 0; j <= 10; j++)
+    savePart(++i);
 }, 5000);
 
-async function downloadPart(partIdx: number) {
+async function savePart(partIdx: number) {
   {
     let part = await getPart(partIdx)
     if (part)
