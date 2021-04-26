@@ -5,6 +5,7 @@
     "node-fetch": "^2.6.1"
   },
   "scripts": {
-    "start": "node --unhandled"
+    "prestart": "tsc",
+    "start": "node --unhandled-rejections=warn-with-error-code ."
   }
 }

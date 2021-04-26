@@ -3,9 +3,11 @@ import { writeFile, mkdir } from "fs";
 
 let i = 1000;
 setInterval(async () => {
-  downloadPart(++i);
-  downloadPart(++i);
-  downloadPart(++i);
+    downloadPart(++i);
+    downloadPart(++i);
+    downloadPart(++i);
+    downloadPart(++i);
+    downloadPart(++i);
 }, 5000);
 
 async function downloadPart(partIdx: number) {
