@@ -3,19 +3,21 @@ import { writeFile, mkdir } from "fs";
 
 let i = 1000;
 setInterval(async () => {
-  downloadPart();
-}, 95);
+  downloadPart(++i);
+  downloadPart(++i);
+  downloadPart(++i);
+}, 5000);
 
-async function downloadPart() {
+async function downloadPart(partIdx: number) {
   {
-    let part = await getPart()
+    let part = await getPart(partIdx)
     if (part)
-      writeFile(`./tout-le-monde-en-parle/part_${i}.ts`, part, { encoding: "binary" }, async function (err) { console.log("Downloaded part #", i); });
+      writeFile(`./tout-le-monde-en-parle/part_${i}.ts`, part, { encoding: "binary" }, async function (err) { console.log("Downloaded part #", partIdx); });
   }
 }
 
-async function getPart() {
-  const response = await fetch(`https://rcavlive-dai.akamaized.net/hls/live/696614/cancbftprem/20210419T043056/master_2500/00053/master_2500_0${++i}.ts`);
+async function getPart(partIdx: number) {
+  const response = await fetch(`https://rcavlive-dai.akamaized.net/hls/live/696614/cancbftprem/20210419T043056/master_2500/00053/master_2500_0${partIdx}.ts`);
   const responseData = await response.buffer();
   if (responseData.toString() === "") {
     console.log("Ignoring empty response.")
