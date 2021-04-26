@@ -1,0 +1,7 @@
+{
+  "main": "dist/index.js",
+  "dependencies": {
+    "@types/node-fetch": "^2.5.10",
+    "node-fetch": "^2.6.1"
+  }
+}
